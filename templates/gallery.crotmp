@@ -1,0 +1,22 @@
+<:use 'templates/base.crotmp'>
+<|page(.title)>
+<div class="gallery">
+    <@gallery : $i>
+
+    <?{ $i.<type> eq 'img' }>
+    <img src="<$i.<src>>">
+    </?>
+
+    <?{ $i.<type> eq 'text' }>
+    <div class="text">
+        <$i.<text>>
+    </div>
+    </?>
+
+    <?{ $i.<type> eq 'heading' }>
+    <h1 class="heading"><$i.<text>></h1>
+    </?>
+
+    </@>
+</div>
+</|>

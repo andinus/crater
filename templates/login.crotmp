@@ -1,0 +1,15 @@
+<:use 'templates/base.crotmp'>
+<|page('Log In')>
+<form method="post" action="/login">
+    <?.error>
+    <div class="alert" role="alert">
+        <.error>
+    </div>
+    </?>
+
+    <input type="pass" name="pass" id="pass" placeholder="Password" required>
+    <br>
+    <input type="submit" value="Log In" />
+</form>
+</div>
+</|>

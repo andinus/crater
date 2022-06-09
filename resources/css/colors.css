@@ -1,0 +1,215 @@
+/*
+ * Colors from Modus theme.
+ * https://gitlab.com/protesilaos/dotfiles/-/blob/master/emacs/.emacs.d/modus-themes/modus-themes.el
+ */
+
+:root {
+    --bg-main: #ffffff;
+    --bg-dim: #f8f8f8;
+    --bg-alt: #f0f0f0;
+
+    --bg-active: #d7d7d7;
+    --bg-inactive: #efefef;
+
+    --bg-special-cold: #dde3f4;
+    --bg-special-mild: #c4ede0;
+    --bg-special-warm: #f0e0d4;
+    --bg-special-calm: #f8ddea;
+
+    --bg-hl-alt-intense: #e8dfd1;
+
+    --fg-main: #000000;
+    --fg-dim: #282828;
+    --fg-alt: #505050;
+
+    --fg-active: #0a0a0a;
+    --fg-inactive: #404148;
+
+    --fg-special-cold: #093060;
+    --fg-special-mild: #184034;
+    --fg-special-warm: #5d3026;
+    --fg-special-calm: #61284f;
+
+    /* foregrounds that can be combined with bg-main, bg-dim, bg-alt */
+    --red: #a60000;
+    --red-alt: #972500;
+    --red-alt-other: #a0132f;
+    --red-faint: #7f1010;
+    --red-alt-faint: #702f00;
+    --red-alt-other-faint: #7f002f;
+
+    --green: #005e00;
+    --green-alt: #315b00;
+    --green-alt-other: #145c33;
+    --green-faint: #104410;
+    --green-alt-faint: #30440f;
+    --green-alt-other-faint: #0f443f;
+
+    --yellow: #813e00;
+    --yellow-alt: #70480f;
+    --yellow-alt-other: #863927;
+    --yellow-faint: #5f4400;
+    --yellow-alt-faint: #5d5000;
+    --yellow-alt-other-faint: #5e3a20;
+
+    --blue: #0031a9;
+    --blue-alt: #2544bb;
+    --blue-alt-other: #0000c0;
+    --blue-faint: #003497;
+    --blue-alt-faint: #0f3d8c;
+    --blue-alt-other-faint: #001087;
+
+    --magenta: #721045;
+    --magenta-alt: #8f0075;
+    --magenta-alt-other: #5317ac;
+    --magenta-faint: #752f50;
+    --magenta-alt-faint: #7b206f;
+    --magenta-alt-other-faint: #55348e;
+
+    --cyan: #00538b;
+    --cyan-alt: #30517f;
+    --cyan-alt-other: #005a5f;
+    --cyan-faint: #005077;
+    --cyan-alt-faint: #354f6f;
+    --cyan-alt-other-faint: #125458;
+
+    /* combine with bg-main */
+    --red-intense: #b60000;
+    --orange-intense: #904200;
+    --green-intense: #006800;
+    --yellow-intense: #605b00;
+    --blue-intense: #1f1fce;
+    --magenta-intense: #a8007f;
+    --purple-intense: #7f10d0;
+    --cyan-intense: #005f88;
+
+    /* combine with bg-active, bg-inactive */
+    --red-active: #8a0000;
+    --green-active: #004c2e;
+    --yellow-active: #702f00;
+    --blue-active: #0030b4;
+    --magenta-active: #5c2092;
+    --cyan-active: #003f8a;
+
+    /* subtle goes with fg-dim. intense with fg-main. */
+    --red-subtle-bg: #f2b0a2;
+    --red-intense-bg: #ff9f9f;
+    --green-subtle-bg: #aecf90;
+    --green-intense-bg: #5ada88;
+    --yellow-subtle-bg: #e4c340;
+    --yellow-intense-bg: #f5df23;
+    --blue-subtle-bg: #b5d0ff;
+    --blue-intense-bg: #77baff;
+    --magenta-subtle-bg: #f0d3ff;
+    --magenta-intense-bg: #d5baff;
+    --cyan-subtle-bg: #c0efff;
+    --cyan-intense-bg: #42cbd4;
+
+    --yellow-nuanced-fg: #3f3000;
+}
+@media (prefers-color-scheme: dark) {
+    :root {
+        --bg-main: #000000;
+        --bg-dim: #100f10;
+        --bg-alt: #191a1b;
+
+        --bg-active: #323232;
+        --bg-inactive: #1e1e1e;
+
+        --bg-special-cold: #203448;
+        --bg-special-mild: #00322e;
+        --bg-special-warm: #382f27;
+        --bg-special-calm: #392a48;
+
+        --bg-hl-alt-intense: #282e46;
+
+        --fg-main: #ffffff;
+        --fg-dim: #e0e6f0;
+        --fg-alt: #a8a8a8;
+
+        --fg-active: #f4f4f4;
+        --fg-inactive: #bfc0c4;
+
+        --fg-special-cold: #c6eaff;
+        --fg-special-mild: #bfebe0;
+        --fg-special-warm: #f8dec0;
+        --fg-special-calm: #fbd6f4;
+
+        /* foregrounds that can be combined with bg-main, bg-dim, bg-alt */
+        --red: #ff8059;
+        --red-alt: #ef8b50;
+        --red-alt-other: #ff9077;
+        --red-faint: #ffa0a0;
+        --red-alt-faint: #f5aa80;
+        --red-alt-other-faint: #ff9fbf;
+
+        --green: #44bc44;
+        --green-alt: #70b900;
+        --green-alt-other: #00c06f;
+        --green-faint: #78bf78;
+        --green-alt-faint: #99b56f;
+        --green-alt-other-faint: #88bf99;
+
+        --yellow: #d0bc00;
+        --yellow-alt: #c0c530;
+        --yellow-alt-other: #d3b55f;
+        --yellow-faint: #d2b580;
+        --yellow-alt-faint: #cabf77;
+        --yellow-alt-other-faint: #d0ba95;
+
+        --blue: #2fafff;
+        --blue-alt: #79a8ff;
+        --blue-alt-other: #00bcff;
+        --blue-faint: #82b0ec;
+        --blue-alt-faint: #a0acef;
+        --blue-alt-other-faint: #80b2f0;
+
+        --magenta: #feacd0;
+        --magenta-alt: #f78fe7;
+        --magenta-alt-other: #b6a0ff;
+        --magenta-faint: #e0b2d6;
+        --magenta-alt-faint: #ef9fe4;
+        --magenta-alt-other-faint: #cfa6ff;
+
+        --cyan: #00d3d0;
+        --cyan-alt: #4ae2f0;
+        --cyan-alt-other: #6ae4b9;
+        --cyan-faint: #90c4ed;
+        --cyan-alt-faint: #a0bfdf;
+        --cyan-alt-other-faint: #a4d0bb;
+
+        /* combine with bg-main */
+        --red-intense: #fe6060;
+        --orange-intense: #fba849;
+        --green-intense: #4fe42f;
+        --yellow-intense: #f0dd60;
+        --blue-intense: #4fafff;
+        --magenta-intense: #ff62d4;
+        --purple-intense: #9f80ff;
+        --cyan-intense: #3fdfd0;
+
+        /* combine with bg-active, bg-inactive */
+        --red-active: #ffa7ba;
+        --green-active: #70d73f;
+        --yellow-active: #dbbe5f;
+        --blue-active: #34cfff;
+        --magenta-active: #d5b1ff;
+        --cyan-active: #00d8b4;
+
+        /* subtle goes with fg-dim. intense with fg-main. */
+        --red-subtle-bg: #762422;
+        --red-intense-bg: #a4202a;
+        --green-subtle-bg: #2f4a00;
+        --green-intense-bg: #006800;
+        --yellow-subtle-bg: #604200;
+        --yellow-intense-bg: #874900;
+        --blue-subtle-bg: #10387c;
+        --blue-intense-bg: #2a40b8;
+        --magenta-subtle-bg: #49366e;
+        --magenta-intense-bg: #7042a2;
+        --cyan-subtle-bg: #00415e;
+        --cyan-intense-bg: #005f88;
+
+        --yellow-nuanced-fg: #dfdfb0;
+    }
+}

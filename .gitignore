@@ -1,1 +1,7 @@
-lib/.precomp
+# Caches
+.precomp
+
+# Backup files
+*~
+
+.log

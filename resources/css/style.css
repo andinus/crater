@@ -1,0 +1,104 @@
+@import 'colors.css';
+
+::selection {
+    background-color: var(--bg-hl-alt-intense);
+}
+
+*, *:before, *:after {
+  box-sizing: border-box;
+}
+
+body {
+    color: var(--fg-main);
+    background-color: var(--bg-main);
+    font-family: "Iosevka Aile", sans-serif;
+
+    margin: 2em auto;
+    max-width: 90%;
+    line-height: 1.5;
+}
+
+h1 { color: var(--fg); }
+h2 { color: var(--fg-special-warm); }
+h3 { color: var(--fg-special-cold); }
+h4 { color: var(--fg-special-mild); }
+h5 { color: var(--fg-special-calm); }
+h6 { color: var(--yellow-nuanced-fg); }
+
+h1, h2, h3, h4, h5, h6, .title {
+    font-family: "Iosevka Etoile", serif;
+}
+
+hr { color: var(--fg-alt); }
+
+a { color: var(--blue-alt-other); }
+a:hover, a:focus {
+    color: var(--fg-dim);
+    background-color: var(--blue-subtle-bg);
+}
+a:visited { color: var(--cyan); }
+a:visited:hover, a:visited:focus {
+    color: var(--fg-dim);
+    background-color: var(--cyan-subtle-bg);
+}
+
+img {
+    display: block;
+    max-width: 100%;
+    box-shadow: var(--bg-inactive) 0px 0px 0px 1px,
+                var(--fg-inactive) 0px 0px 0px 1px inset;
+}
+
+input, .alert {
+    color: var(--fg-main);
+    background-color: var(--bg-main);
+    border: 1px var(--bg-active) solid;
+    padding: 0.5em;
+    margin: 0.4em;
+    min-width: 30%;
+}
+
+img, .text, .heading {
+    margin: 3.2em 1em;
+}
+
+.heading {
+    box-shadow: var(--blue-intense-bg) 0px 0px 0px 2px inset,
+                var(--bg-main) 10px -10px 0px -3px,
+                var(--green-subtle-bg) 10px -10px,
+                var(--bg-main) 20px -20px 0px -3px,
+                var(--yellow-intense-bg) 20px -20px,
+                var(--bg-main) 30px -30px 0px -3px,
+                var(--red-subtle-bg) 30px -30px,
+                var(--bg-main) 40px -40px 0px -3px,
+                var(--red-intense-bg) 40px -40px;
+    padding: 1em;
+}
+
+.text {
+    box-shadow: var(--magenta-intense-bg) 0px 0px 0px 3px,
+                var(--green-subtle-bg) 0px 0px 0px 6px,
+                var(--yellow-intense-bg) 0px 0px 0px 9px,
+                var(--red-subtle-bg) 0px 0px 0px 12px,
+                var(--red-intense-bg) 0px 0px 0px 15px;
+    padding: 1em;
+}
+
+.gallery {
+    column-count: auto;
+    column-width: 384px;
+}
+.gallery img {
+    transform-origin: center;
+    transform: perspective(800px) rotateY(2deg);
+    transition: 0.4s;
+}
+.gallery:hover img { opacity: 0.4; }
+.gallery img:hover {
+    transform: perspective(800px) rotateY(0deg) scale(1.1);
+    box-shadow: var(--bg-active) 0px 20px 30px -10px;
+    opacity: 1;
+}
+.alert {
+    background-color: var(--red-subtle-bg);
+}

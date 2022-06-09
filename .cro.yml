@@ -1,0 +1,15 @@
+---
+links:  []
+name: crater
+entrypoint: lib/Crater/Service.rakumod
+endpoints:
+  -
+    protocol: http
+    host-env: CRATER_HOST
+    id: http
+    name: HTTP
+    port-env: CRATER_PORT
+id: crater
+env:  []
+cro: 1
+...

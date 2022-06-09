@@ -1,0 +1,31 @@
+{
+    "name": "crater",
+    "auth": "zef:andinus",
+    "version": "0.1.0",
+    "description": "Crater is a photo gallery",
+    "authors": ["Andinus <andinus@nand.sh>"],
+    "license": "ISC",
+    "perl": "6.d",
+    "provides": {
+        "Crater::Service": "lib/Crater/Service.rakumod",
+        "Crater::Routes": "lib/Crater/Routes.rakumod",
+        "Crater::Routes::Auth": "lib/Crater/Routes/Auth.rakumod",
+        "Crater::Routes::Gallery": "lib/Crater/Routes/Gallery.rakumod",
+        "Crater::Gallery": "lib/Crater/Gallery.rakumod",
+        "Crater::Session": "lib/Crater/Session.rakumod"
+    },
+    "depends": [
+        "DBIish:ver<0.6.5+>:auth<zef:raku-community-modules>",
+        "Cro::HTTP",
+        "Cro::WebApp"
+    ],
+    "build-depends": [],
+    "test-depends": [],
+    "resources": [
+
+    ],
+    "tags": [
+        "crater", "media", "gallery"
+    ],
+    "source-url": "https://github.com/andinus/crater"
+}
