@@ -17,6 +17,7 @@ sub MAIN(
 ) is export {
     put "Initialized: {now - INIT now}";
     put "Gallery: {$directory.absolute}";
+    put "Password: $password";
 
     my %conf = from-toml($config.slurp);
     %conf<server><host> //= %*ENV<CRATER_HOST>;

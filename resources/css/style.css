@@ -47,6 +47,7 @@ img {
     max-width: 100%;
     box-shadow: var(--bg-inactive) 0px 0px 0px 1px,
                 var(--fg-inactive) 0px 0px 0px 1px inset;
+    will-change: opacity, transform;
 }
 
 input, .alert {
@@ -87,6 +88,7 @@ img, .text, .heading {
 .gallery {
     column-count: auto;
     column-width: 384px;
+    column-fill: balance;
 }
 .gallery img {
     transform-origin: center;
