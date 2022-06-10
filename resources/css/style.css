@@ -13,7 +13,7 @@ body {
     background-color: var(--bg-main);
     font-family: "Iosevka Aile", sans-serif;
 
-    margin: 2em auto;
+    margin: 4em auto;
     max-width: 90%;
     line-height: 1.5;
 }
@@ -59,9 +59,8 @@ input, .alert {
     min-width: 30%;
 }
 
-img, .text, .heading {
-    margin: 3.2em 1em;
-}
+img, .text { width: 384px; }
+.heading { width: 364px; }
 
 .heading {
     box-shadow: var(--blue-intense-bg) 0px 0px 0px 2px inset,
@@ -85,11 +84,11 @@ img, .text, .heading {
     padding: 1em;
 }
 
-.gallery {
-    column-count: auto;
-    column-width: 384px;
-    column-fill: balance;
-}
+/* .gallery { */
+/*     column-count: auto; */
+/*     column-width: 384px; */
+/*     column-fill: balance; */
+/* } */
 .gallery img {
     transform-origin: center;
     transform: perspective(800px) rotateY(2deg);

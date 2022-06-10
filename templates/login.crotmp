@@ -7,7 +7,7 @@
     </div>
     </?>
 
-    <input type="pass" name="pass" id="pass" placeholder="Password" required>
+    <input type="password" name="pass" id="pass" placeholder="Password" required>
     <br>
     <input type="submit" value="Log In" />
 </form>

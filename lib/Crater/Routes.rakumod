@@ -20,5 +20,8 @@ sub routes(
         get -> 'resources', 'css', *@path {
             static 'resources', 'css', @path;
         }
+        get -> 'resources', 'js', *@path {
+            static 'resources', 'js', @path;
+        }
     }
 }
