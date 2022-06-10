@@ -47,7 +47,6 @@ img {
     max-width: 100%;
     box-shadow: var(--bg-inactive) 0px 0px 0px 1px,
                 var(--fg-inactive) 0px 0px 0px 1px inset;
-    will-change: opacity, transform;
 }
 
 input, .alert {
