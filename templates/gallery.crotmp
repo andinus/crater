@@ -1,24 +1,18 @@
 <:use 'templates/base.crotmp'>
-<|page(.title)>
-<div id="gallery">
-    <@gallery : $i>
-
-    <?{ $i.<type> eq 'img' }>
-    <img src="<$i.<src>>" loading="lazy">
-    </?>
-
-    <?{ $i.<type> eq 'text' }>
-    <div class="text">
-        <$i.<text>>
+  <|page(.title)>
+    <div id="gallery">
+      <@gallery : $i>
+        <?{ $i.<type> eq 'img' }>
+        <img alt="<$i.<alt>>" src="<$i.<src>>" loading="lazy">
+        </?>
+        <?{ $i.<type> eq 'text' }>
+        <div class="text"><$i.<text>></div>
+        </?>
+        <?{ $i.<type> eq 'heading' }>
+        <h1 class="heading"><$i.<text>></h1>
+        </?>
+      </@>
     </div>
-    </?>
-
-    <?{ $i.<type> eq 'heading' }>
-    <h1 class="heading"><$i.<text>></h1>
-    </?>
-
-    </@>
-</div>
-<script type="text/javascript" src="/resources/js/bricks.js"></script>
-<script type="text/javascript" src="/resources/js/gallery.js"></script>
+    <script type="text/javascript" src="/resources/js/bricks.js"></script>
+    <script type="text/javascript" src="/resources/js/gallery.js"></script>
 </|>

@@ -24,7 +24,9 @@ const instance = Bricks({
 instance
     .on('pack',   () => console.log('ALL grid items packed.'))
     .on('update', () => console.log('NEW grid items packed.'))
-    .on('resize', size => console.log('The grid has be re-packed to accommodate a new BREAKPOINT.', size));
+    .on('resize', size => console.log(
+        'The grid has be re-packed to accommodate a new BREAKPOINT.', size
+    ));
 
 // start it up, when the DOM is ready. note that if images are in the
 // grid, you may need to wait for document.readyState === 'complete'.

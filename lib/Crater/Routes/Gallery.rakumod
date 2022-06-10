@@ -19,7 +19,7 @@ sub gallery-routes(
             redirect '/login', :see-other;
         }
         get -> *@path {
-            static $gallery.directory, @path;
+            static $gallery.directory.add(".crater/thumbnails"), @path;
         }
     }
 }

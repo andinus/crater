@@ -1,5 +1,3 @@
-@import 'colors.css';
-
 ::selection {
     background-color: var(--bg-hl-alt-intense);
 }
