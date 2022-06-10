@@ -6,11 +6,13 @@
 // gutter  - the space (in px) between the columns and grid items
 
 // image width.
-const imgW = 384;
+const imgW = 400;
 
 const sizes = [
     { columns: 1, gutter: 30 },
-    { mq: ((imgW * 2.5) + 40) + "px", columns: 2, gutter: 40 },
+    { mq: ((imgW * 2.2) + 40) + "px", columns: 2, gutter: 35 },
+    { mq: ((imgW * 3.5) + 50) + "px", columns: 3, gutter: 50 },
+    { mq: ((imgW * 4.4) + 50) + "px", columns: 4, gutter: 50 },
     // { mq: '768px', columns: 2, gutter: 25 },
     // { mq: '1280px', columns: 3, gutter: 50 }
 ];
@@ -28,7 +30,6 @@ instance
 
 // start it up, when the DOM is ready. note that if images are in the
 // grid, you may need to wait for document.readyState === 'complete'.
-
 document.addEventListener('DOMContentLoaded', eve => {
     document.addEventListener('readystatechange', event => {
         if (event.target.readyState === 'complete') {
