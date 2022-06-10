@@ -5,3 +5,5 @@
 *~
 
 .log
+
+resources/config.toml

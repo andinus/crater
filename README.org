@@ -3,9 +3,9 @@
 #+export_file_name: index
 #+setupfile: ~/.emacs.d/org-templates/projects.org
 
-| Website         | https://andinus.unfla.me/crater   |
-| Source          | https://git.unfla.me/crater       |
-| GitHub (mirror) | https://github.com/andinus/crater |
+| Website         | https://andinus.unfla.me/projects/crater |
+| Source          | https://git.unfla.me/crater              |
+| GitHub (mirror) | https://github.com/andinus/crater        |
 
 * License
 
