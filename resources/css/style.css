@@ -60,6 +60,18 @@ input, .alert {
 
 img, .text { width: 400px; }
 .heading { width: 380px; }
+@media only screen and (max-width: 512px) {
+    img, .text { width: 368px; }
+    .heading { width: 350px; }
+}
+@media only screen and (max-width: 450px) {
+    img, .text { width: 350px; }
+    .heading { width: 330px; }
+}
+@media only screen and (max-width: 400px) {
+    img, .text { width: 330px; }
+    .heading { width: 310px; }
+}
 
 .heading {
     box-shadow: var(--blue-intense-bg) 0px 0px 0px 2px inset,
@@ -83,15 +95,15 @@ img, .text { width: 400px; }
     padding: 1em;
 }
 
-.gallery {
+#gallery {
     margin: auto;
 }
-.gallery img {
+#gallery img {
     transform-origin: center;
     transition: 0.5s;
 }
-.gallery:hover img { opacity: 0.5; }
-.gallery img:hover {
+#gallery:hover img { opacity: 0.5; }
+#gallery img:hover {
     transform: scale(1.1);
     box-shadow: var(--bg-active) 0px 20px 30px -10px;
     opacity: 1;

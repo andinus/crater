@@ -1,6 +1,6 @@
 <:use 'templates/base.crotmp'>
 <|page(.title)>
-<div class="gallery">
+<div id="gallery">
     <@gallery : $i>
 
     <?{ $i.<type> eq 'img' }>
