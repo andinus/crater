@@ -29,14 +29,25 @@ bricks
     ));
 
 document.addEventListener('DOMContentLoaded', event => {
-    bricks.resize(true); // bind resize handler
+    bricks.resize(true).pack(); // bind resize handler & initial pack
 });
 
+/**
+ * packing should be done multiple times. Sometimes the div of
+ * directories is not properly packed if packing is done only once.
+ */
 // Packing after loading images ////////////////////////////////////////////
 
 const onImagesLoaded = (container, event) => {
     const images = container.getElementsByTagName("img");
     const progressBar = document.getElementById("loading-progress");
+
+    // Keeps track of how many times we've packed the images.
+    let packed = 0;
+    const incrementPackedAndPack = () => {
+        packed++;
+        bricks.pack();
+    };
 
     // failed keeps track of images that failed to load.
     let failed = 0;
@@ -52,6 +63,28 @@ const onImagesLoaded = (container, event) => {
                 progressBar.value = round(
                     ((images.length - remaining) / images.length) * 100
                 );
+
+                // pack multiple times for better experience. This way
+                // the initial pictures are properly visible to the
+                // user while the other load. It's very cheap to pack
+                // lots of elements too using bricks.js so it's not an
+                // issue.
+                //
+                // There is no point in specifying such large ranges
+                // as this runs in a single thread to for sure we'll
+                // hit the range.
+                if (5 < progressBar.value && progressBar.value < 20)
+                    if (packed < 2)
+                        incrementPackedAndPack();
+
+                if (30 < progressBar.value && progressBar.value < 50)
+                    if (packed < 4)
+                        incrementPackedAndPack();
+
+                if (80 < progressBar.value && progressBar.value < 95)
+                    if (packed < 5)
+                        incrementPackedAndPack();
+
                 if (remaining === failed)
                     event(remaining, failed, progressBar);
             });

@@ -14,7 +14,7 @@
     <div id="gallery">
       <@gallery : $i>
         <?{ $i.<type> eq 'directory' }>
-        <div class="directory"><$i.<text>></div>
+        <div><a href="./<$i.<text>>"><p class="directory"><$i.<text>></p></a></div>
         </?>
         <?{ $i.<type> eq 'img' }>
         <img alt="<$i.<alt>>" src="/resources/img/<$i.<src>>">

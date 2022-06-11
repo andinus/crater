@@ -111,6 +111,10 @@ img { width: 400px; }
 #gallery {
     margin: auto;
 }
+#gallery a {
+    color: var(--fg-main);
+    text-decoration: none;
+}
 #gallery img {
     transform-origin: center;
     transition: 0.5s;
