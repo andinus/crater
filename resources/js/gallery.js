@@ -9,9 +9,10 @@ const imgW = 400;
 
 const sizes = [
     { columns: 1, gutter: 30 },
-    { mq: round((imgW * 2.2) + 40) + "px", columns: 2, gutter: 35 },
+    { mq: round((imgW * 2.2) + 40) + "px", columns: 2, gutter: 40 },
     { mq: round((imgW * 3.5) + 50) + "px", columns: 3, gutter: 50 },
-    { mq: round((imgW * 4.4) + 50) + "px", columns: 4, gutter: 50 },
+    { mq: round((imgW * 4.5) + 50) + "px", columns: 4, gutter: 50 },
+    { mq: round((imgW * 5.5) + 60) + "px", columns: 5, gutter: 60 },
 ];
 
 const bricks = Bricks({

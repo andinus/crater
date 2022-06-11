@@ -58,6 +58,9 @@ img {
 
 img { width: 400px; }
 .heading, .text, .directory { width: 380px; }
+@media only screen and (min-width: 768px) {
+    .heading { margin-left: -20px; }
+}
 @media only screen and (max-width: 512px) {
     img { width: 368px; }
     .heading, .text, .directory { width: 350px; }
