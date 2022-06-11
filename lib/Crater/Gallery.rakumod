@@ -3,6 +3,7 @@ class Crater::Gallery {
     has Str $!title;
 
     submethod TWEAK() {
+        # Get title from file if exists.
         my $title-file = $!directory.add(".crater/title");
         $!title = $title-file.slurp.chomp if $title-file.f;
     }
@@ -13,43 +14,48 @@ class Crater::Gallery {
     method list(:@sub-dir) {
         # This will be considered an attempt to attack. There is no
         # reason to check '.' I belive.
-        if @sub-dir.grep('.'|'..').elems {
-            die "[!!!] @sub-dir contains '..'/'.'";
-        }
+        die "[!!!] @sub-dir contains '..'/'.'" if @sub-dir.grep('.'|'..');
 
-        my @gallery;
+        # Serve the subdirectory if passed.
         my @paths = @sub-dir
                      ?? $!directory.add(@sub-dir.join("/")).dir
                      !! $!directory.dir;
 
-        with $!title {
-            push @gallery, %( :type<heading>, :text($_) );
-        }
+        # Gallery holds all the elements that will be shown.
+        my @gallery;
+        @gallery.push(%( :type<heading>, :text($_) )) with $!title;
 
         # Add directories on top.
         for @paths.grep(*.d).sort {
             next if .ends-with(".crater");
-            push @gallery, %( :type<directory>,
-                              :text($_.relative($!directory)) );
+            push @gallery, %(:type<directory>, :text($_.relative($!directory)));
         }
 
-        for @paths.grep(*.f).sort(*.modified) {
-            my Str $ext = .extension.lc;
-            # For images get the original if thumbnail doesn't exist,
-            # otherwise use the thumbnail.
-            if $ext eq "jpg"|"png" {
-                my $rel = $_.relative($!directory);
-                my $alt = $rel;
-                unless $!directory.add(".crater/thumbnails").add($rel).f {
-                    $rel ~= "?original";
+        # Adding supported file types.
+        for @paths.grep(*.f).sort(*.modified) -> $f {
+            my $rel = $f.relative($!directory);
+
+            given $f.extension.lc {
+                when 'jpg'|'png' {
+                    my $thumb = $!directory.add(".crater/thumbnails").add($rel);
+
+                    # For images get the original if thumbnail doesn't
+                    # exist, otherwise use the thumbnail.
+                    push @gallery, %(
+                        :type<img>,
+                        :src($thumb.f ?? $rel !! "{$rel}?original"),
+                        alt => $rel
+                    );
                 }
-                push @gallery, %( :type<img>, :src($rel), :$alt );
-            } elsif $ext eq "0" {
-                push @gallery, %( :type<heading>, :text($_.slurp.chomp) );
-            } elsif $ext eq "txt" {
-                push @gallery, %( :type<text>, :text($_.slurp.chomp) );
-            } else {
-                note "Unhandled file: $_";
+                when '0' {
+                    push @gallery, %(:type<heading>, :text($f.slurp.chomp));
+                }
+                when 'txt' {
+                    push @gallery, %(:type<text>, :text($f.slurp.chomp));
+                }
+                default {
+                    note "Unhandled file: $f";
+                }
             }
         }
         return @gallery;

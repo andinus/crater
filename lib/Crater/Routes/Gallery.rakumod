@@ -30,7 +30,7 @@ sub gallery-routes(
 
             template 'gallery.crotmp', {
                 gallery => $gallery.list(sub-dir => @path),
-                title => $gallery.title(),
+                title => $gallery.title() // "Gallery",
                 nav => @nav,
                 show-nav => @path.elems ?? True !! False
             };
