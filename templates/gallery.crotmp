@@ -3,6 +3,13 @@
     <noscript>
       <div class="alert" role="alert">JavaScript required.</div>
     </noscript>
+    <?.show-nav>
+    <div id="nav">
+        <@nav : $p>
+        <a href="<$p.<url>>"><$p.<name>></a>&nbsp;/&nbsp;
+        </@>
+    </div>
+    </?>
     <div id="loading">
       <label for="loading-progress">Loading Images:</label>
       <progress id="loading-progress" max="100" value="0"></progress>

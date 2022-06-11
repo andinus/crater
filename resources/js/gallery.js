@@ -66,7 +66,7 @@ const onImagesLoaded = (container, event) => {
     let remaining = images.length;
 
     if (images.length === 0) {
-        showLoadingError("No images to display.");
+        // showLoadingError("No images to display.");
         event(remaining, failed, progressBar);
     }
 

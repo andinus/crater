@@ -18,9 +18,21 @@ sub gallery-routes(
 
         # Gallery view.
         get -> LoggedIn $session, *@path {
+            # Generates a navigation bar for nested directories.
+            my @nav = %(name => "home", url => "/"), ;
+            for @path.kv -> $idx, $p {
+                next if $p eq "";
+                push @nav, %(
+                    name => $p,
+                    url => (@nav[*-1]<url> ~ $p ~ "/")
+                );
+            }
+
             template 'gallery.crotmp', {
                 gallery => $gallery.list(sub-dir => @path),
-                title => "Gallery"
+                title => $gallery.title(),
+                nav => @nav,
+                show-nav => @path.elems ?? True !! False
             };
         }
 

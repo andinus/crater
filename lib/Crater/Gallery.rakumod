@@ -27,7 +27,7 @@ class Crater::Gallery {
         }
 
         # Add directories on top.
-        for @paths.grep(*.d) {
+        for @paths.grep(*.d).sort {
             next if .ends-with(".crater");
             push @gallery, %( :type<directory>,
                               :text($_.relative($!directory)) );

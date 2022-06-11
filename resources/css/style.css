@@ -128,7 +128,7 @@ img { width: 400px; }
 .alert {
     background-color: var(--red-subtle-bg);
 }
-#loading-progress, #loading-error { margin-bottom: 2em; }
+#loading-progress, #loading-error, #nav { margin-bottom: 2em; }
 #loading-error { display: none; }
 #loading-error button {
     float: right;
@@ -137,4 +137,8 @@ img { width: 400px; }
     border: 1px var(--bg-active) solid;
     padding: 0.25em 1em;
 }
-#loading-progress { width: 100%; }
+#loading-progress, #nav { width: 100%; }
+#nav {
+    background-color: var(--bg-alt);
+    padding: 1em 0.8em;
+}
