@@ -25,7 +25,7 @@ sub auth-routes(
                 }
             }
         }
-        get -> Crater::Session $session, 'logout' {
+        get -> LoggedIn $session, 'logout' {
             $session.logged-in = False;
             redirect :see-other, '/';
         }
