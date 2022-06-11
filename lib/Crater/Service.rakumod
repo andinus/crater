@@ -27,6 +27,7 @@ sub MAIN(
 
     my Cro::Service $http = Cro::HTTP::Server.new(
         http => <1.1>,
+        allowed-methods => <GET POST>,
         host => %conf<server><host> || die("host not set"),
         port => %conf<server><port> || die("port not set"),
         application => routes(:$password, :$gallery),
