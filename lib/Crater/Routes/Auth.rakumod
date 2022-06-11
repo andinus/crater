@@ -3,6 +3,7 @@ use Cro::WebApp::Template;
 
 use Crater::Session;
 
+#| auth-routes contains routes related to authentication.
 sub auth-routes(
     Str :$password!, #= password for authentication
 ) is export {

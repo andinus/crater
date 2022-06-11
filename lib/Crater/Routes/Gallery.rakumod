@@ -4,6 +4,8 @@ use Cro::WebApp::Template;
 use Crater::Gallery;
 use Crater::Session;
 
+#| gallery-routes contains routes for gallery view, images. Routes in
+#| this block must be authenticated.
 sub gallery-routes(
     Crater::Gallery :$gallery!, #= gallery object
 ) is export {
@@ -21,24 +23,21 @@ sub gallery-routes(
             # Generates a navigation bar for nested directories.
             my @nav = %(name => "home", url => "/"), ;
             for @path.kv -> $idx, $p {
-                next if $p eq "";
-                push @nav, %(
-                    name => $p,
-                    url => (@nav[*-1]<url> ~ $p ~ "/")
-                );
+                next if $p eq '';
+                @nav.push: %(name => $p, url => (@nav[*-1]<url> ~ $p ~ "/"));
             }
 
             template 'gallery.crotmp', {
+                :@nav,
+                show-nav => @path.elems ?? True !! False,
                 gallery => $gallery.list(sub-dir => @path),
                 title => $gallery.title() // "Gallery",
-                nav => @nav,
-                show-nav => @path.elems ?? True !! False
             };
         }
 
         # Redirect to login page if not logged in.
         get -> *@path {
-            redirect '/login', :see-other;
+            response.status = 401;
         }
     }
 }

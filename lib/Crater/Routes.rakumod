@@ -5,12 +5,13 @@ use Crater::Gallery;
 use Crater::Routes::Auth;
 use Crater::Routes::Gallery;
 
+#| routes contains all routes. This block may contain unauthenticated
+#| paths.
 sub routes(
     Crater::Gallery :$gallery!, #= gallery object
     Str :$password!, #= password for authentication
 ) is export {
     template-location 'templates/';
-
     route {
         after { redirect '/login', :see-other if .status == 401 };
 

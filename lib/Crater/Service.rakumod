@@ -8,7 +8,7 @@ use Crater::Routes;
 use Crater::Gallery;
 use Crater::Session;
 
-#| Crater is a photo gallery
+#| Crater is a photo gallery.
 sub MAIN(
     IO() :$config where *.IO.f = 'resources/config.toml', #= configuration file
     IO() :$directory! where *.IO.d, #= gallery directory (takes absolute path)
@@ -19,12 +19,9 @@ sub MAIN(
     put "Gallery: {$directory.absolute}";
     put "Password: $password";
 
-    my %conf = from-toml($config.slurp);
-    %conf<server><host> //= %*ENV<CRATER_HOST>;
-    %conf<server><port> //= %*ENV<CRATER_PORT>;
-
     my Crater::Gallery $gallery = Crater::Gallery.new(:$directory);
 
+    my %conf = from-toml($config.slurp);
     my Cro::Service $http = Cro::HTTP::Server.new(
         http => <1.1>,
         allowed-methods => <GET POST>,
