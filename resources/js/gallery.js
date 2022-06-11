@@ -71,7 +71,7 @@ const onImagesLoaded = (container, event) => {
 
 const gallery = document.getElementById("gallery");
 const imagesLoaded = (remaining, failed, progressBar) => {
-    bricks.pack();
+    bricks.pack(); // packing images
 
     progressBar.value = 100;
     document.getElementById("loading").style.display = "none";

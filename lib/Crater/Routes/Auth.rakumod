@@ -13,7 +13,6 @@ sub auth-routes(
         get -> Crater::Session $session, 'login' {
             template 'login.crotmp', { :!error };
         }
-
         post -> Crater::Session $session, 'login' {
             request-body -> (:$pass!, *%) {
                 if $password eq $pass {

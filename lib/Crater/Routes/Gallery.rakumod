@@ -8,6 +8,15 @@ sub gallery-routes(
     Crater::Gallery :$gallery!, #= gallery object
 ) is export {
     route {
+        # Logged in users can view images.
+        get -> LoggedIn $session, 'resources', 'img', *@path, :$original {
+            my $dir = $gallery.directory;
+            # Serve the thumbnail unless original image was requested.
+            $dir .= add(".crater/thumbnails") unless $original.defined;
+            static $dir, @path;
+        }
+
+        # Gallery view.
         get -> LoggedIn $session {
             template 'gallery.crotmp', {
                 gallery => $gallery.list(),
@@ -15,11 +24,9 @@ sub gallery-routes(
             };
         }
 
-        get -> {
-            redirect '/login', :see-other;
-        }
+        # Redirect to login page if not logged in.
         get -> *@path {
-            static $gallery.directory.add(".crater/thumbnails"), @path;
+            redirect '/login', :see-other;
         }
     }
 }

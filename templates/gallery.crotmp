@@ -1,5 +1,8 @@
 <:use 'templates/base.crotmp'>
   <|page(.title)>
+    <noscript>
+      <div class="alert" role="alert">JavaScript required.</div>
+    </noscript>
     <div id="loading">
       <label for="loading-progress">Loading Images:</label>
       <progress id="loading-progress" max="100" value="0"></progress>
@@ -10,8 +13,11 @@
     </div>
     <div id="gallery">
       <@gallery : $i>
+        <?{ $i.<type> eq 'directory' }>
+        <div class="directory"><$i.<text>></div>
+        </?>
         <?{ $i.<type> eq 'img' }>
-        <img alt="<$i.<alt>>" src="<$i.<src>>" loading="lazy">
+        <img alt="<$i.<alt>>" src="/resources/img/<$i.<src>>">
         </?>
         <?{ $i.<type> eq 'text' }>
         <div class="text"><$i.<text>></div>
