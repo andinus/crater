@@ -1,68 +1,94 @@
 'use strict';
 
+const round = Math.round;
+
 // image width.
 const imgW = 400;
 
 // Gallery using bricks.js ////////////////////////////////////////////////////
 
-// mq      - the minimum viewport width (String CSS unit: em, px, rem)
-// columns - the number of vertical columns
-// gutter  - the space (in px) between the columns and grid items
 const sizes = [
     { columns: 1, gutter: 30 },
-    { mq: Math.round((imgW * 2.2) + 40) + "px", columns: 2, gutter: 35 },
-    { mq: Math.round((imgW * 3.5) + 50) + "px", columns: 3, gutter: 50 },
-    { mq: Math.round((imgW * 4.4) + 50) + "px", columns: 4, gutter: 50 },
+    { mq: round((imgW * 2.2) + 40) + "px", columns: 2, gutter: 35 },
+    { mq: round((imgW * 3.5) + 50) + "px", columns: 3, gutter: 50 },
+    { mq: round((imgW * 4.4) + 50) + "px", columns: 4, gutter: 50 },
 ];
 
-const instance = Bricks({
+const bricks = Bricks({
     container: '#gallery',
     packed: 'data-packed',
     sizes: sizes
 });
 
-instance
+bricks
     .on('pack',   () => console.log('ALL grid items packed.'))
     .on('update', () => console.log('NEW grid items packed.'))
     .on('resize', size => console.log(
         'The grid has be re-packed to accommodate a new BREAKPOINT.', size
     ));
 
-// start it up, when the DOM is ready. note that if images are in the
-// grid, you may need to wait for document.readyState === 'complete'.
 document.addEventListener('DOMContentLoaded', event => {
-    instance.resize(true).pack(); // bind resize handler & pack initial items
-});
-document.addEventListener('readystatechange', event => {
-    if (event.target.readyState === 'complete') {
-        instance.pack();
-    }
+    bricks.resize(true); // bind resize handler
 });
 
-// Re-packing after loading images ////////////////////////////////////////////
+// Packing after loading images ////////////////////////////////////////////
 
-function onImagesLoaded(container, event) {
-    let images = container.getElementsByTagName("img");
-    let loaded = images.length;
+const onImagesLoaded = (container, event) => {
+    const images = container.getElementsByTagName("img");
+    const progressBar = document.getElementById("loading-progress");
+
+    // failed keeps track of images that failed to load.
+    let failed = 0;
+    let remaining = images.length;
+
     for (let i = 0; i < images.length; i++) {
-        if (images[i].complete) {
-            loaded--;
-        }
+        if (images[i].complete)
+            remaining--;
         else {
+            // Add listeners to images that have to be loaded.
             images[i].addEventListener("load", function () {
-                loaded--;
-                if (loaded == 0) {
-                    event();
-                }
+                remaining--;
+                progressBar.value = round(
+                    ((images.length - remaining) / images.length) * 100
+                );
+                if (remaining === failed)
+                    event(remaining, failed, progressBar);
             });
-        }
-        if (loaded == 0) {
-            event();
-        }
-    }
-}
 
-const container = document.getElementById("gallery");
-onImagesLoaded(container, function () {
-    instance.pack();
-});
+            // If loading fails then we increment failed, an error
+            // will be shown later.
+            images[i].addEventListener("error", function () {
+                failed++;
+                if (remaining === failed)
+                    event(remaining, failed, progressBar);
+            });
+
+        }
+        if (remaining == failed)
+            event(remaining, failed, progressBar);
+    }
+};
+
+const gallery = document.getElementById("gallery");
+const imagesLoaded = (remaining, failed, progressBar) => {
+    bricks.pack();
+
+    progressBar.value = 100;
+    document.getElementById("loading").style.display = "none";
+
+    // Show error on failure.
+    const loadError = document.getElementById("loading-error");
+    const loadErrorText = document.getElementById("loading-error-text");
+    const loadErrorDismiss = document.getElementById("loading-error-dismiss");
+    if (failed !== 0) {
+        loadError.style.display = "block";
+        const t = failed === 1 ? "image" : "images";
+        loadErrorText.innerHTML = `${failed} ${t} failed to load.`;
+
+        loadErrorDismiss.addEventListener('click', function(){
+            loadError.style.display = "none";
+        });
+    }
+};
+
+onImagesLoaded(gallery, imagesLoaded);

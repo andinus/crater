@@ -1,6 +1,6 @@
 <:use 'templates/base.crotmp'>
   <|page('Log In')>
-    <form method="post" action="/login">
+    <form id="login-form" method="post" action="/login">
       <?.error>
       <div class="alert" role="alert">
         <.error>

@@ -47,7 +47,7 @@ img {
                 var(--fg-inactive) 0px 0px 0px 1px inset;
 }
 
-input, .alert {
+#login-form input, .alert {
     color: var(--fg-main);
     background-color: var(--bg-main);
     border: 1px var(--bg-active) solid;
@@ -109,3 +109,13 @@ img, .text { width: 400px; }
 .alert {
     background-color: var(--red-subtle-bg);
 }
+#loading-progress, #loading-error { margin-bottom: 2em; }
+#loading-error { display: none; }
+#loading-error button {
+    float: right;
+    color: var(--fg-main);
+    background-color: var(--bg-main);
+    border: 1px var(--bg-active) solid;
+    padding: 0.25em 1em;
+}
+#loading-progress { width: 100%; }

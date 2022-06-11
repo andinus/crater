@@ -1,5 +1,13 @@
 <:use 'templates/base.crotmp'>
   <|page(.title)>
+    <div id="loading">
+      <label for="loading-progress">Loading Images:</label>
+      <progress id="loading-progress" max="100" value="0"></progress>
+    </div>
+    <div id="loading-error" class="alert" role="alert">
+      <span id="loading-error-text"></span>
+      <button id="loading-error-dismiss">Dismiss</button>
+    </div>
     <div id="gallery">
       <@gallery : $i>
         <?{ $i.<type> eq 'img' }>
