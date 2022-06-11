@@ -38,6 +38,18 @@ document.addEventListener('DOMContentLoaded', event => {
  */
 // Packing after loading images ////////////////////////////////////////////
 
+const showLoadingError = (message) => {
+    const loadError = document.getElementById("loading-error");
+    const loadErrorText = document.getElementById("loading-error-text");
+    const loadErrorDismiss = document.getElementById("loading-error-dismiss");
+    loadError.style.display = "block";
+    loadErrorText.innerHTML = message;
+
+    loadErrorDismiss.addEventListener('click', function(){
+        loadError.style.display = "none";
+    });
+}
+
 const onImagesLoaded = (container, event) => {
     const images = container.getElementsByTagName("img");
     const progressBar = document.getElementById("loading-progress");
@@ -52,6 +64,11 @@ const onImagesLoaded = (container, event) => {
     // failed keeps track of images that failed to load.
     let failed = 0;
     let remaining = images.length;
+
+    if (images.length === 0) {
+        showLoadingError("No images to display.");
+        event(remaining, failed, progressBar);
+    }
 
     for (let i = 0; i < images.length; i++) {
         if (images[i].complete)
@@ -111,17 +128,9 @@ const imagesLoaded = (remaining, failed, progressBar) => {
     document.getElementById("loading").style.display = "none";
 
     // Show error on failure.
-    const loadError = document.getElementById("loading-error");
-    const loadErrorText = document.getElementById("loading-error-text");
-    const loadErrorDismiss = document.getElementById("loading-error-dismiss");
     if (failed !== 0) {
-        loadError.style.display = "block";
         const t = failed === 1 ? "image" : "images";
-        loadErrorText.innerHTML = `${failed} ${t} failed to load.`;
-
-        loadErrorDismiss.addEventListener('click', function(){
-            loadError.style.display = "none";
-        });
+        showLoadingError(`${failed} ${t} failed to load.`);
     }
 };
 

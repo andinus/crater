@@ -10,9 +10,17 @@ class Crater::Gallery {
     #| Accessor for $!title.
     method title() { $!title }
 
-    method list() {
+    method list(:@sub-dir) {
+        # This will be considered an attempt to attack. There is no
+        # reason to check '.' I belive.
+        if @sub-dir.grep('.'|'..').elems {
+            die "[!!!] @sub-dir contains '..'/'.'";
+        }
+
         my @gallery;
-        my @paths = $!directory.dir;
+        my @paths = @sub-dir
+                     ?? $!directory.add(@sub-dir.join("/")).dir
+                     !! $!directory.dir;
 
         with $!title {
             push @gallery, %( :type<heading>, :text($_) );
@@ -20,6 +28,7 @@ class Crater::Gallery {
 
         # Add directories on top.
         for @paths.grep(*.d) {
+            next if .ends-with(".crater");
             push @gallery, %( :type<directory>,
                               :text($_.relative($!directory)) );
         }

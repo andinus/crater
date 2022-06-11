@@ -17,9 +17,9 @@ sub gallery-routes(
         }
 
         # Gallery view.
-        get -> LoggedIn $session {
+        get -> LoggedIn $session, *@path {
             template 'gallery.crotmp', {
-                gallery => $gallery.list(),
+                gallery => $gallery.list(sub-dir => @path),
                 title => "Gallery"
             };
         }
