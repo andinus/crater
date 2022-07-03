@@ -1,5 +1,5 @@
 #+title: Crater
-#+subtitle: Crater is a photo gallery
+#+subtitle: Crater is a media gallery
 #+export_file_name: index
 #+setupfile: ~/.emacs.d/org-templates/projects.org
 
@@ -7,16 +7,26 @@
 | Source          | https://git.unfla.me/crater              |
 | GitHub (mirror) | https://github.com/andinus/crater        |
 
-* Bugs
+Crater is a media gallery.
 
-- Cannot handle nested directories :: Need to deep dive - weird
-  behaviour on directories like ~2022/2022-06/2022-06-01~ if the top level
-  directory is shared.
+* History
+
+Initially I planned to make a simple gallery to share pictures with
+friends. The idea was to share my pictures, writings with friends for a
+specific trip.
+
+I released ~v0.1.0~ that does achieve this. Specific directories can be
+shared easily along with writings. It displays pictures in pretty
+masonry layout.
+
+I want to expand this to make a media gallery that I can use to view my
+pictures/videos. And I also want to be able to create album out of them
+and share it with my friends.
 
 * License
 
 #+begin_src
-Crater - Crater is a photo gallery
+Crater - Crater is a media gallery
 Copyright (C) 2021, 2022 Andinus <andinus@nand.sh>
 
 This program is free software: you can redistribute it and/or modify
