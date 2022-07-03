@@ -7,6 +7,12 @@
 | Source          | https://git.unfla.me/crater              |
 | GitHub (mirror) | https://github.com/andinus/crater        |
 
+* Bugs
+
+- Cannot handle nested directories :: Need to deep dive - weird
+  behaviour on directories like ~2022/2022-06/2022-06-01~ if the top level
+  directory is shared.
+
 * License
 
 #+begin_src
