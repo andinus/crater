@@ -9,6 +9,54 @@
 
 Crater is a media gallery.
 
+* Design
+
+- This is the roadmap for v0.2.0. It is a work in-progress.
+
+Crater is a web application to view media gallery. It allows to create
+/sharing albums/ to share gallery with others.
+
+On creating a /sharing album/ it will generate an access code, others can
+use the access code to view the specific album.
+
+** Authorization
+
+*** Admin
+
+The CLI will generate a random code for admin login.
+
+Admin will be able to view the entire media gallery. They will also be
+able to add pictures to a /sharing album/ and view the access code for it.
+
+*** Guests
+
+Guests will have to enter the access code. On authorization the page
+will be rendered with all the images that has been added to the /sharing
+album/.
+
+** View
+
+We could show the entire gallery in a single page. The images can be
+restricted to ~n~ (set by user) and user can load more.
+
+There could be filters (by name, date, etc.) and sorting.
+
+I'm thinking of a page like:
+#+begin_src
+2022
+
+June
+---- pictures ----
+May
+---- pictures ----
+
+
+2020
+
+December
+---- pictures ----
+#+end_src
+
 * History
 
 Initially I planned to make a simple gallery to share pictures with
@@ -22,6 +70,11 @@ masonry layout.
 I want to expand this to make a media gallery that I can use to view my
 pictures/videos. And I also want to be able to create album out of them
 and share it with my friends.
+
+I'm creating this because I don't have a way to viewing my media
+gallery. My primary computer runs OpenBSD. It initially was for me to
+share pictures with friends and web was a good platform for that. I
+think it's a good platform for this purpose as well.
 
 * License
 
