@@ -36,6 +36,9 @@ album/.
 
 ** View
 
+The landing page could have statistics and a sidebar that points to the
+photos.
+
 We could show the entire gallery in a single page. The images can be
 restricted to ~n~ (set by user) and user can load more.
 
